@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Performance Analysis Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#f1f5f9;padding:15px}
+.header{background:#1e1b4b;color:white;padding:20px;border-radius:15px;text-align:center}
+.header h1{font-size:22px}.header p{opacity:.85;font-size:13px;margin-top:5px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:15px 0}
+.card{background:white;padding:15px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.card small{color:#64748b}.card h2{font-size:22px;margin:5px 0}.card span{color:#16a34a;font-size:12px;font-weight:bold}
+.card span.red{color:#dc2626}
+.box{background:white;padding:15px;border-radius:12px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.box h3{margin-bottom:12px;font-size:16px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px;text-align:left;border-bottom:1px solid #e2e8f0}
+th{background:#f8fafc}
+.topper{background:#fef9c3;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:bold}
+.insight{background:#e0e7ff;border-left:4px solid #4f46e5;padding:12px;border-radius:8px;font-size:13px;line-height:1.7}
+.footer{text-align:center;font-size:12px;color:#94a3b8;margin:10px}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>🎓 Student Performance Analysis</h1>
+<p>B.Sc Computer Science - Sem 3 | 120 Students | Analyzed by Kamalakannan G</p>
+</div>
+<div class="cards">
+<div class="card"><small>Average Score</small><h2>72.4%</h2><span>▲ 5.2% vs Last Sem</span></div>
+<div class="card"><small>Pass Percentage</small><h2>88.3%</h2><span>▲ 4.1% Improved</span></div>
+<div class="card"><small>Topper</small><h2>Priya S - 96%</h2><span>🏆 1st Rank</span></div>
+<div class="card"><small>Need Attention</small><h2>14 Students</h2><span class="red">Below 40% - Maths</span></div>
+</div>
+<div class="box"><h3>📊 Subject Wise Average Marks</h3><canvas id="barChart"></canvas></div>
+<div class="box"><h3>📈 Attendance vs Marks - Correlation</h3><canvas id="lineChart"></canvas></div>
+<div class="box"><h3>💡 Key Insights (Analysis Result)</h3>
+<div class="insight">
+<b>1.</b> Attendance 90% ku mela irukura students oda average 85% - Attendance thaan main reason.<br>
+<b>2.</b> Maths la thaan jaasthi fail - 14 students below 40%. Special class venum.<br>
+<b>3.</b> Girls average (76%) Boys average (69%) vida jaasthi.<br>
+<b>4.</b> Practical subjects la ellarum theory vida 12% jaasthi score pannirukaanga.
+</div></div>
+<div class="box"><h3>🏆 Top 5 Students</h3>
+<table><tr><th>Rank</th><th>Name</th><th>Avg</th><th>Attendance</th></tr>
+<tr><td>1</td><td>Priya S <span class="topper">TOPPER</span></td><td>96%</td><td>98%</td></tr>
+<tr><td>2</td><td>Kamalakannan G</td><td>94%</td><td>96%</td></tr>
+<tr><td>3</td><td>Divya R</td><td>92%</td><td>95%</td></tr>
+<tr><td>4</td><td>Arun K</td><td>90%</td><td>93%</td></tr>
+<tr><td>5</td><td>Sneha M</td><td>89%</td><td>94%</td></tr>
+</table></div>
+<div class="box"><h3>⚠️ Need Improvement - Bottom 3</h3>
+<table><tr><th>Name</th><th>Avg</th><th>Reason</th></tr>
+<tr><td>Rahul V</td><td>35%</td><td>Low Attendance 55%</td></tr>
+<tr><td>Vijay P</td><td>38%</td><td>Maths Weak</td></tr>
+<tr><td>Karthik S</td><td>41%</td><td>Low Attendance 60%</td></tr>
+</table></div>
+<p class="footer">Built by Kamalakannan G | B.Sc Computer Science | Python, Excel, Data Analysis, Chart.js</p>
+<script>
+new Chart(document.getElementById('barChart'),{type:'bar',data:{labels:['Tamil','English','Maths','Python','DBMS','OS'],datasets:[{label:'Average Marks',data:[78,72,58,84,74,68],backgroundColor:['#4f46e5','#16a34a','#dc2626','#f59e0b','#06b6d4','#8b5cf6'],borderRadius:8}]},options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:100}}}});
+new Chart(document.getElementById('lineChart'),{type:'line',data:{labels:['50% Att','60% Att','70% Att','80% Att','90% Att','95%+ Att'],datasets:[{label:'Average Marks',data:[42,52,61,70,82,91],borderColor:'#16a34a',backgroundColor:'rgba(22,163,74,0.15)',fill:true,tension:0.4}]},options:{scales:{y:{beginAtZero:true,max:100}}}});
+</script>
+</body>
+</html>
